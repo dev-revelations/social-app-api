@@ -4,6 +4,9 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
+const userRoute = require("./routes/users");
+const authRoute = require("./routes/auth");
+
 // Initializing the app
 
 const app = express();
@@ -22,8 +25,12 @@ mongoose.connect(
 
 app.use(express.json());
 app.use(helmet());
-app.use(morgan("common"));
+app.use(morgan('common'));
 
+// Routes
+
+app.use('/api/users', userRoute);
+app.use('/api/auth', authRoute);
 
 
 app.listen(8800, () => {
