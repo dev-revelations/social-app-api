@@ -6,6 +6,8 @@ const morgan = require("morgan");
 
 const app = express();
 
+dotenv.config();
+
 app.listen(8800, () => {
     console.log("Server is running!");
 });
