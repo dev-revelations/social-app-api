@@ -53,6 +53,17 @@ router.get('/id/:id', async (req, res) => {
     }
 });
 
+// get a user by username
+router.get('/user/:username', async (req, res) => {
+    try {
+        const user = await User.findOne({ username: req.params.username });
+        const { password, updatedAt, ...others } = user._doc;
+        res.status(200).json(others);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // follow a user
 router.put('/:id/follow', async (req, res) => {
     if (req.body.userId !== req.params.id) {
