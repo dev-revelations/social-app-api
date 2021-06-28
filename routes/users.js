@@ -41,8 +41,8 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-// get a user
-router.get('/:id', async (req, res) => {
+// get a user by userId
+router.get('/id/:id', async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         // Filtering out the unnecessary fields
